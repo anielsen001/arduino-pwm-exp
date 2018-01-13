@@ -1,0 +1,13 @@
+These are some experiments with PWM and Arduino.
+
+* References
+
+This is pretty basic:
+https://www.arduino.cc/en/Tutorial/PWM
+
+This is detailed but needs some context to understand
+https://www.arduino.cc/en/Tutorial/SecretsOfArduinoPWM
+
+
+https://arduino-info.wikispaces.com/Arduino-PWM-Frequency
+
