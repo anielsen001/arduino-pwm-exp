@@ -1,14 +1,23 @@
 These are some experiments with PWM and Arduino.
 
+* Basics
+
+Most information is for ATmega328P
+
+
 * References
 
-This is pretty basic:
+- This is pretty basic:
 https://www.arduino.cc/en/Tutorial/PWM
 
-This is detailed but needs some context to understand
+- This is detailed but needs some context to understand, refers
+to ATmega328P
 https://www.arduino.cc/en/Tutorial/SecretsOfArduinoPWM
 
-https://arduino-info.wikispaces.com/Arduino-PWM-Frequency
+- Some ATtiny85 discussion can be found here:
+http://forum.arduino.cc/index.php?topic=60945.0
+
+- https://arduino-info.wikispaces.com/Arduino-PWM-Frequency
 
 * Boards to work with 
 
@@ -28,3 +37,4 @@ These are the boards available from earlier projects
 
 - https://www.adafruit.com/product/2010
 - http://www.microchip.com/wwwproducts/en/ATmega328P
+
