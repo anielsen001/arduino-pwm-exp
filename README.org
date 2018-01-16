@@ -14,14 +14,17 @@ https://arduino-info.wikispaces.com/Arduino-PWM-Frequency
 
 These are the boards available from earlier projects
 
-Adafruit GEMMA v2 - Miniature wearable electronic platform[ID:1222]
+** Adafruit GEMMA v2 - Miniature wearable electronic platform[ID:1222]
+
 https://www.adafruit.com/gemma/
 http://www.microchip.com/wwwproducts/en/attiny85
 
-Adafruit Trinket - Mini Microcontroller - 3.3V Logic (MicroUSB) [ID:1500] = $6.95
+** Adafruit Trinket - Mini Microcontroller - 3.3V Logic (MicroUSB) [ID:1500] 5
+
 https://www.adafruit.com/product/1500
 http://www.microchip.com/wwwproducts/en/attiny85
 
-Adafruit Pro Trinket - 3V 12MHz[ID:2010] = $9.95
+** Adafruit Pro Trinket - 3V 12MHz[ID:2010] 
+
 https://www.adafruit.com/product/2010
 http://www.microchip.com/wwwproducts/en/ATmega328P
