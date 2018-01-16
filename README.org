@@ -8,6 +8,20 @@ https://www.arduino.cc/en/Tutorial/PWM
 This is detailed but needs some context to understand
 https://www.arduino.cc/en/Tutorial/SecretsOfArduinoPWM
 
-
 https://arduino-info.wikispaces.com/Arduino-PWM-Frequency
 
+* Boards to work with 
+
+These are the boards available from earlier projects
+
+Adafruit GEMMA v2 - Miniature wearable electronic platform[ID:1222]
+https://www.adafruit.com/gemma/
+http://www.microchip.com/wwwproducts/en/attiny85
+
+Adafruit Trinket - Mini Microcontroller - 3.3V Logic (MicroUSB) [ID:1500] = $6.95
+https://www.adafruit.com/product/1500
+http://www.microchip.com/wwwproducts/en/attiny85
+
+Adafruit Pro Trinket - 3V 12MHz[ID:2010] = $9.95
+https://www.adafruit.com/product/2010
+http://www.microchip.com/wwwproducts/en/ATmega328P
