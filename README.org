@@ -2,7 +2,10 @@ These are some experiments with PWM and Arduino.
 
 * Basics
 
-Most information is for ATmega328P
+Most information is for ATmega328P, but appears to also apply to the 85.
+This focuses on the 328P:
+
+The 328P has 3 PWM timers, each with 2 outputs.
 
 
 * References
