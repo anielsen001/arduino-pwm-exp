@@ -41,3 +41,50 @@ These are the boards available from earlier projects
 - https://www.adafruit.com/product/2010
 - http://www.microchip.com/wwwproducts/en/ATmega328P
 
+* Really Basic Arduino set up
+
+** Install and configure the Arduino IDE
+
+ - Download IDE from: https://www.arduino.cc/en/Guide/Linux
+ - I did not run the install script, just untarred and ran from that directory
+
+** Install Adafruit board descriptors
+
+ - AdaFruit's insturctions:  https://learn.adafruit.com/add-boards-arduino-v164/installing-boards
+ - AdaFruit's board description json location: https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
+
+** Get USB connection to work
+
+
+#+begin_src shell
+$ dmesg 
+
+[879368.466266] usb 1-7: new low-speed USB device number 18 using xhci_hcd
+[879368.612273] usb 1-7: New USB device found, idVendor=1781, idProduct=0c9f
+[879368.612282] usb 1-7: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[879368.612288] usb 1-7: Product: USBtiny
+[879368.612293] usb 1-7: Manufacturer: Adafruit
+[879427.530656] input: Yubico Yubikey 4 OTP+U2F+CCID as /devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.0/0003:1050:0407.0090/input/input234
+[879427.589883] hid-generic 0003:1050:0407.0090: input,hidraw0: USB HID v1.10 Keyboard [Yubico Yubikey 4 OTP+U2F+CCID] on usb-0000:00:14.0-3/input0
+[879740.767210] usb 1-7: USB disconnect, device number 18
+[879807.044447] usb 1-7: new low-speed USB device number 19 using xhci_hcd
+[879807.190934] usb 1-7: New USB device found, idVendor=1781, idProduct=0c9f
+[879807.190943] usb 1-7: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[879807.190949] usb 1-7: Product: USBtiny
+[879807.190954] usb 1-7: Manufacturer: Adafruit
+#+end_src
+
+*** change udev rules
+
+These instruction describe how to get adafruit's rules: 
+https://learn.adafruit.com/adafruit-arduino-ide-setup/linux-setup
+
+But I found that these rules did not work, the group "dialout" needed
+to be changed to "plugdev", from the link here:
+https://andijcr.github.io/blog/2014/07/31/notes-on-trinket-on-ubuntu-14.04/
+
+ - these commands update udev with the new rules
+#+Begin_src shell
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+#+end_src
