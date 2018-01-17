@@ -88,3 +88,6 @@ https://andijcr.github.io/blog/2014/07/31/notes-on-trinket-on-ubuntu-14.04/
 sudo udevadm control --reload-rules
 sudo udevadm trigger
 #+end_src
+
+After all this, the connection still does not work, but the fading
+red light just becomes continuously on.
