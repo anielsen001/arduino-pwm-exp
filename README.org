@@ -173,3 +173,12 @@ I can reproduce the chain of errors if I hit the reset button on the
 board. When this happens, the red LED first fades in/out and the goes
 steady. When the light is steady, cannot connect to the board with
 avrdude.
+
+To find the hex code, turn on verbose in the Arduino IDE "File -> Preferences"
+then you can see the build directory. Tar this up and copy somewhere
+before you quit the IDE since the build directory is deleted when the IDE
+quits. I put it into
+
+#+begin_src shell
+~/sw/arduino/build/blink.tar
+#+end_src
