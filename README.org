@@ -92,4 +92,14 @@ avrdude: verification error; content mismatch
 avrdude: verification error; content mismatch
 #+end_src
 
+*** add user to plugdev and dialout groups
+
+I was already in the plugdev group, but added dialout for serial use
+later.
+
+#+begin_src shell
+sudo usermod -aG dialout <username>
+#+end_src
+
+
 Could be difference between trinket and trinket pro?
