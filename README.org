@@ -42,7 +42,7 @@ These are the boards available from earlier projects
 - http://www.microchip.com/wwwproducts/en/ATmega328P
 
 * Really Basic Arduino set up
-
+  
 ** Install and configure the Arduino IDE
 
  - Download IDE from: https://www.arduino.cc/en/Guide/Linux
@@ -50,11 +50,14 @@ These are the boards available from earlier projects
 
 ** Install Adafruit board descriptors
 
- - AdaFruit's insturctions:  https://learn.adafruit.com/add-boards-arduino-v164/installing-boards
+ - AdaFruit's instructions:  https://learn.adafruit.com/add-boards-arduino-v164/installing-boards
  - AdaFruit's board description json location: https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
 
-** Get USB connection to work
+** Set programmer to USBtinyISP
 
+ - In Arduino IDE "Tools -> Programmer -> USBtinyISP"
+
+** Get USB connection to work
 
 #+begin_src shell
 $ dmesg 
@@ -101,5 +104,72 @@ later.
 sudo usermod -aG dialout <username>
 #+end_src
 
+Could be difference between trinket and trinket pro? Probably not, udev
+rules appear to be for both.
 
-Could be difference between trinket and trinket pro?
+Tried running with sudo to make sure all the udev stuff was OK, and 
+the same type of errors occur (the first mismatch occurs at different
+location:
+#+begin_src shell
+vrdude: error: usbtiny_send: Connection timed out (expected 128, got -110)
+avrdude: verification error, first mismatch at byte 0x0100
+         0xff != 0x38
+avrdude: verification error; content mismatch
+avrdude: verification error; content mismatch
+#+end_src
+
+Switched back to running as user and now get the exact same error when
+running with sudo:
+#+begin_src shell
+vrdude: error: usbtiny_send: Connection timed out (expected 128, got -110)
+avrdude: verification error, first mismatch at byte 0x0100
+         0xff != 0x38
+avrdude: verification error; content mismatch
+avrdude: verification error; content mismatch
+#+end_src
+
+** debug usb connection
+
+Tried using avrdude directly to read the board and get different results each time:
+#+begin_src
+~/sw/arduino/arduino-1.8.5$ ./hardware/tools/avr/bin/avrdude avrdude -C ./hardware/tools/avr/etc/avrdude.conf -c usbtiny -p m328p
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude: Device signature = 0x1e950f (probably m328p)
+
+avrdude: safemode: Fuses OK (E:FD, H:D0, L:FF)
+
+avrdude done.  Thank you.
+
+~/sw/arduino/arduino-1.8.5$ ./hardware/tools/avr/bin/avrdude avrdude -C ./hardware/tools/avr/etc/avrdude.conf -c usbtiny -p m328p
+avrdude: Error: Could not find USBtiny device (0x1781/0xc9f)
+
+avrdude done.  Thank you.
+
+~/sw/arduino/arduino-1.8.5$ ./hardware/tools/avr/bin/avrdude avrdude -C ./hardware/tools/avr/etc/avrdude.conf -c usbtiny -p m328p
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude: Device signature = 0x1e950f (probably m328p)
+avrdude: safemode: Verify error - unable to read lfuse properly. Programmer may not be reliable.
+avrdude: safemode: To protect your AVR the programming will be aborted
+
+avrdude done.  Thank you.
+
+~sw/arduino/arduino-1.8.5$ ./hardware/tools/avr/bin/avrdude avrdude -C ./hardware/tools/avr/etc/avrdude.conf -c usbtiny -p m328p
+avrdude: Error: Could not find USBtiny device (0x1781/0xc9f)
+
+avrdude done.  Thank you.
+
+
+#+end_src
+
+I can reproduce the chain of errors if I hit the reset button on the 
+board. When this happens, the red LED first fades in/out and the goes
+steady. When the light is steady, cannot connect to the board with
+avrdude.
