@@ -161,7 +161,7 @@ avrdude: safemode: To protect your AVR the programming will be aborted
 
 avrdude done.  Thank you.
 
-~sw/arduino/arduino-1.8.5$ ./hardware/tools/avr/bin/avrdude avrdude -C ./hardware/tools/avr/etc/avrdude.conf -c usbtiny -p m328p
+~/sw/arduino/arduino-1.8.5$ ./hardware/tools/avr/bin/avrdude avrdude -C ./hardware/tools/avr/etc/avrdude.conf -c usbtiny -p m328p
 avrdude: Error: Could not find USBtiny device (0x1781/0xc9f)
 
 avrdude done.  Thank you.
@@ -182,3 +182,152 @@ quits. I put it into
 #+begin_src shell
 ~/sw/arduino/build/blink.tar
 #+end_src
+
+This is the command that the arduino ide generates:
+#+begin_src
+~/sw/arduino/arduino-1.8.5/hardware/tools/avr/bin/avrdude -C ~/sw/arduino/arduino-1.8.5/hardware/tools/avr/etc/avrdude.conf -v -patmega328p -cusbtiny -Uflash:w:/tmp/arduino_build_246875/Blink.ino.hex:i
+#+end_src
+
+Modified slightly to this version:
+#+begin_src
+~/sw/arduino/arduino-1.8.5/hardware/tools/avr/bin/avrdude -C ~/sw/arduino/arduino-1.8.5/hardware/tools/avr/etc/avrdude.conf -v -patmega328p -cusbtiny -Uflash:w:$HOME/sw/arduino/build/arduino_build_731595/Blink.ino.hex:i
+#+end_src
+ 
+to get this output:
+#+begin_src
+
+avrdude: Version 6.3, compiled on Jan 17 2017 at 11:00:16
+         Copyright (c) 2000-2005 Brian Dean, http://www.bdmicro.com/
+         Copyright (c) 2007-2014 Joerg Wunsch
+
+         System wide configuration file is "/home/apn/sw/arduino/arduino-1.8.5/hardware/tools/avr/etc/avrdude.conf"
+         User configuration file is "/home/apn/.avrduderc"
+         User configuration file does not exist or is not a regular file, skipping
+
+         Using Port                    : usb
+         Using Programmer              : usbtiny
+avrdude: usbdev_open(): Found USBtinyISP, bus:device: 001:107
+         AVR Part                      : ATmega328P
+         Chip Erase delay              : 9000 us
+         PAGEL                         : PD7
+         BS2                           : PC2
+         RESET disposition             : dedicated
+         RETRY pulse                   : SCK
+         serial program mode           : yes
+         parallel program mode         : yes
+         Timeout                       : 200
+         StabDelay                     : 100
+         CmdexeDelay                   : 25
+         SyncLoops                     : 32
+         ByteDelay                     : 0
+         PollIndex                     : 3
+         PollValue                     : 0x53
+         Memory Detail                 :
+
+                                  Block Poll               Page                       Polled
+           Memory Type Mode Delay Size  Indx Paged  Size   Size #Pages MinW  MaxW   ReadBack
+           ----------- ---- ----- ----- ---- ------ ------ ---- ------ ----- ----- ---------
+           eeprom        65    20     4    0 no       1024    4      0  3600  3600 0xff 0xff
+           flash         65     6   128    0 yes     32768  128    256  4500  4500 0xff 0xff
+           lfuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+           hfuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+           efuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+           lock           0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+           calibration    0     0     0    0 no          1    0      0     0     0 0x00 0x00
+           signature      0     0     0    0 no          3    0      0     0     0 0x00 0x00
+
+         Programmer Type : USBtiny
+         Description     : USBtiny simple USB programmer, http://www.ladyada.net/make/usbtinyisp/
+avrdude: programmer operation not supported
+
+avrdude: Using SCK period of 10 usec
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude: Device signature = 0x1e950f (probably m328p)
+avrdude: safemode: hfuse reads as D0
+avrdude: safemode: efuse reads as FD
+avrdude: NOTE: "flash" memory has been specified, an erase cycle will be performed
+         To disable this feature, specify the -D option.
+avrdude: erasing chip
+avrdude: Using SCK period of 10 usec
+avrdude: reading input file "/home/apn/sw/arduino/build/arduino_build_731595/Blink.ino.hex"
+avrdude: writing flash (976 bytes):
+
+Writing |                                                    | 0% 0.00s
+avrdude: error: usbtiny_send: Connection timed out (expected 128, got -110)
+Writing | ######                                             | 12% 0.54savrdude: 1 retries during SPI command
+avrdude: 1 retries during SPI command
+avrdude: 1 retries during SPI command
+Writing | ##########                                         | 19% 2.17savrdude: 1 retries during SPI command
+Writing | ##########                                         | 20% 2.68savrdude: 2 retries during SPI command
+Writing | ################                                   | 32% 3.76savrdude: 1 retries during SPI command
+Writing | #################                                  | 34% 4.28savrdude: 1 retries during SPI command
+Writing | ##################                                 | 36% 4.79savrdude: 1 retries during SPI command
+Writing | ###################                                | 37% 5.30savrdude: 1 retries during SPI command
+Writing | #####################                              | 42% 5.84savrdude: 1 retries during SPI command
+Writing | #######################                            | 45% 6.36savrdude: 1 retries during SPI command
+Writing | #########################                          | 50% 6.89savrdude: 1 retries during SPI command
+Writing | ##########################                         | 51% 7.40savrdude: 1 retries during SPI command
+Writing | ##########################                         | 52% 7.91savrdude: 1 retries during SPI command
+Writing | ###########################                        | 53% 8.42savrdude: 1 retries during SPI command
+Writing | ############################                       | 56% 8.94savrdude: 1 retries during SPI command
+avrdude: 1 retries during SPI command
+Writing | #############################                      | 57% 9.95savrdude: 1 retries during SPI command
+Writing | ##############################                     | 59% 10.46savrdude: 1 retries during SPI command
+Writing | ##############################                     | 60% 10.97savrdude: 1 retries during SPI command
+Writing | ###############################                    | 62% 11.48savrdude: 1 retries during SPI command
+Writing | #################################                  | 65% 12.00savrdude: 1 retries during SPI command
+Writing | ###################################                | 69% 12.54savrdude: 2 retries during SPI command
+Writing | #####################################              | 74% 13.57savrdude: 4 retries during SPI command
+Writing | ######################################             | 75% 15.58savrdude: 1 retries during SPI command
+Writing | #######################################            | 77% 16.09savrdude: 3 retries during SPI command
+Writing | #######################################            | 78% 17.60savrdude: 1 retries during SPI command
+Writing | #########################################          | 82% 18.13savrdude: 1 retries during SPI command
+Writing | ##########################################         | 84% 18.64savrdude: 1 retries during SPI command
+Writing | ###########################################        | 86% 19.16savrdude: 1 retries during SPI command
+Writing | ##############################################     | 91% 19.69savrdude: 1 retries during SPI command
+Writing | #################################################  | 98% 20.24savrdude: 1 retries during SPI command
+Writing | ################################################## | 100% 20.76s
+
+avrdude: 976 bytes of flash written
+avrdude: verifying flash memory against /home/apn/sw/arduino/build/arduino_build_731595/Blink.ino.hex:
+avrdude: load data flash data from input file /home/apn/sw/arduino/build/arduino_build_731595/Blink.ino.hex:
+avrdude: input file /home/apn/sw/arduino/build/arduino_build_731595/Blink.ino.hex contains 976 bytes
+avrdude: reading on-chip flash data:
+
+Reading | ################################################## | 100% 0.05s
+
+avrdude: verifying ...
+avrdude: verification error, first mismatch at byte 0x0358
+         0xff != 0xe8
+avrdude: verification error; content mismatch
+
+avrdude: safemode: hfuse reads as D0
+avrdude: safemode: efuse reads as FD
+avrdude: safemode: Fuses OK (E:FD, H:D0, L:FF)
+
+avrdude done.  Thank you.
+
+
+#+end_src
+
+According to this https://learn.adafruit.com/introducing-trinket/programming-with-avrdude
+the "avrdude: 1 retries during SPI command" messages are OK due to the
+way the USB programming works.
+
+I also have a trinket (vice trinket pro) and the trinket programs
+fine with slight mods:
+#+begin_src
+~/sw/arduino/arduino-1.8.5/hardware/tools/avr/bin/avrdude -B 3 -D -C ~/sw/arduino/arduino-1.8.5/hardware/tools/avr/etc/avrdude.conf -v -pattiny85 -cusbtiny -Uflash:w:$HOME/sw/arduino/build/trinketblink.hex:i
+#+end_src
+Note that I used the -B 3 option here. If I remove it, then programming fails
+and I can no longer program it without receiving errors. Am I bricking 
+the chips?
+
+From what I can tell the bootloader is hosed: https://learn.adafruit.com/introducing-trinket/repairing-bootloader
+This seems to be a fairly common problem according to the adafruit help forums.
+Their suggested fix is to use an UNO to upload a new bootloader, but I 
+don't have one. :(
+
