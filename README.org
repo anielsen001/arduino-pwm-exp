@@ -51,7 +51,8 @@ These are the boards available from earlier projects
 ** Install Adafruit board descriptors
 
  - AdaFruit's instructions:  https://learn.adafruit.com/add-boards-arduino-v164/installing-boards
- - AdaFruit's board description json location: https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
+ - AdaFruit's board description json location:
+ https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
 
 ** Set programmer to USBtinyISP
 
@@ -72,7 +73,7 @@ $ dmesg
 *** change udev rules
 
 These instruction describe how to get adafruit's rules: 
-https://learn.adafruit.com/adafruit-arduino-ide-setup/linux-setup
+qhttps://learn.adafruit.com/adafruit-arduino-ide-setup/linux-setup
 
 But I found that these rules did not work, the group "dialout" needed
 to be changed to "plugdev", from the link here:
@@ -331,3 +332,22 @@ This seems to be a fairly common problem according to the adafruit help forums.
 Their suggested fix is to use an UNO to upload a new bootloader, but I 
 don't have one. :(
 
+
+** try with arduino uno
+
+To simplify things, got an arduino uno and switched to a computer
+with usb 2.0 ports. With this setup, I can program the arduino with
+the blink program.
+
+Success!
+
+** try with new Pro Trinket
+
+Using different computer with usb 2.0 port. 
+
+Success!
+
+So the bootloaders on the older boards must be corrupted. They need
+to be repaired at some point.
+
+#  LocalWords:  Arduino
